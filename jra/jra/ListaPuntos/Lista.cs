@@ -89,63 +89,65 @@ namespace jra.ListaPuntos
 
         //ELIMINAR ELEMENTO DE LA LISTA
 
-        public Nodo search(int index)// nos retorna el nodo que estamos buscando
-        {
+        //public Nodo search(int index)// nos retorna el nodo que estamos buscando
+        //{
 
-            if (index < 0)
-            {
-                return null;
-            }
+        //    if (index < 0)
+        //    {
+        //        return null;
+        //    }
 
-            int n = 0;
-            Nodo aux = primero;
+        //    int n = 0;
+        //    Nodo aux = primero;
 
-            while (n != index)
-            {
-                aux = aux.enlace;
-                n++;
-            }
+        //    while (n != index)
+        //    {
+        //        aux = aux.enlace;
+        //        n++;
+        //    }
 
-            return aux;
-        }
+        //    return aux;
+        //}
 
-        public void eliminar(string entrada)
-        {
-            Nodo actual, anterior;
-            //inicializa los apuntadores
-            bool encontrado;
-            //inicializa los apuntadores de memoria
-            actual = primero;
-            anterior = null;
-            encontrado = false;
-            //busqueda del nodo anterior
-            while ((actual != null) && (!encontrado))
-            {
-                encontrado = (actual.dato == entrada);
 
-                if (!encontrado)
-                {
-                    anterior = actual;
-                    actual = actual.enlace;
-                }
-            }//end while
+        //public void eliminar(string entrada)
+        //{
+        //    Nodo actual, anterior;
+        //    //inicializa los apuntadores
+        //    bool encontrado;
+        //    //inicializa los apuntadores de memoria
+        //    actual = primero;
+        //    anterior = null;
+        //    encontrado = false;
+        //    //busqueda del nodo anterior
+        //    while ((actual != null) && (!encontrado))
+        //    {
+        //        encontrado = (actual.dato == entrada);
 
-            //enlace del nodo anterior con el siguiente
-            if (actual != null)
-            {
-                //distinguir si es el nodo inicial o cabezaa
-                //o si es cualquier otro nodo de la lista
-                if (actual == primero)
-                {
-                    primero = actual.enlace;
-                }
-                else
-                {
-                    anterior.enlace = actual;
-                }
-                actual = null;
-            }
-        }//end metodo
+        //        if (!encontrado)
+        //        {
+        //            anterior = actual;
+        //            actual = actual.enlace;
+        //        }
+        //    }//end while
+
+        //    //enlace del nodo anterior con el siguiente
+        //    if (actual != null)
+        //    {
+        //        //distinguir si es el nodo inicial o cabezaa
+        //        //o si es cualquier otro nodo de la lista
+        //        if (actual == primero)
+        //        {
+        //            primero = actual.enlace;
+        //        }
+        //        else
+        //        {
+        //            anterior.enlace = actual;
+        //        }
+        //        actual = null;
+        //    }
+        //}//end metodo
+
 
         public Lista insertarLista(string testigo, string entrada)
         {
@@ -161,18 +163,19 @@ namespace jra.ListaPuntos
             return this;
         }
 
-    public void visualizar()
-    {
-        Nodo n;
-        int k = 0;
-        n = primero;
-        while (n != null)
+
+        public void visualizar()
         {
-            Console.WriteLine(n.dato + " ");
-            n = n.enlace;
-            k++;
-            Console.WriteLine((k % 15 != 0 ? " " : "\\n"));
+            Nodo n;
+            int k = 0;
+            n = primero;
+            while (n != null)
+            {
+                Console.WriteLine(n.dato + " ");
+                n = n.enlace;
+                k++;
+                Console.WriteLine((k % 15 != 0 ? " " : "\\n"));
+            }
         }
-    }
-}//end class
+    }//end class
 }

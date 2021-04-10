@@ -25,51 +25,46 @@ namespace jra
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            buscar.Multiselect = true; //Esto va a permitir seleccionar varios archivos al mismo tiempo
+            buscar.Multiselect = true;
 
             //Este if se encarga de abrir la ventana
             if (buscar.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                //ArchivosMP3 = CajaDeBusquedaDeArchivos.SafeFileNames;//Aqui se van a almacenar todos los archivos
-
-                //Para recorrer dependiendo de la cantidad de canciones que haya ingresado 
-                for (int i = 0; i < buscar.FileNames.Length; i++)
-                //FileNames para devolver la extensión de la ruta de acceso del archivo
+                //recorremos dependiendo de la cantidad de canciones que ingresamos
+                for (int i = 0; i < buscar.FileNames.Length; i++)//El filenames para devolver la ruta del archivo
                 {
                     add.insertaOrden(buscar.FileNames[i]); //Para insertarlas a la lista
-
-                    //Para insertarlas al listbox
-                    listBox1.Items.Add(buscar.SafeFileNames[i]);
-                    //SafeFileNames para obtener el nombre y la extensión del archivo seleccionado
+                    //agregamos al listbox
+                    listBox1.Items.Add(buscar.SafeFileNames[i]);//el safefilenames para obtener el nombre y la extension del archivo que seleccionamos
                 }
 
 
                 Reproductor.URL = buscar.FileNames[0];
-                listBox1.SelectedIndex = 0; //SelectedIndex para obtener el índice del elemento seleccionado
+                listBox1.SelectedIndex = 0;
             }
 
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Insertar las canciones al listbox
-            //Va a ejecutarse mientras selectedIndex sea diferente a -1
+            //despues de insertar las canciones
+            //se ejecuta mientras selectedIndex sea diferente a -1
             if (listBox1.SelectedIndex != -1)
             {
-                //Esto va a hacer que cuando el usuario seleccione de la lista de reproduccion automaticamente se reproduzca en windows media player
-                Reproductor.URL = buscar.FileNames[listBox1.SelectedIndex];
+                Reproductor.URL = buscar.FileNames[listBox1.SelectedIndex];//cuando selecionemos se reproducirá
 
             }
         }
 
         private void Eliminar_Click(object sender, EventArgs e)
         {
-            int eliminar = listBox1.SelectedIndex; //Para tomar la posicion a eliminar
+            
+            int eliminar = listBox1.SelectedIndex;//posicion a eliminar
 
             if (listBox1.SelectedIndex != -1)
             {
-                add.eliminar(eliminar);
-                listBox1.Items.RemoveAt(eliminar); //Para eliminar lo que este en la posicion 
+                add.eliminar(eliminar.ToString());
+                listBox1.Items.RemoveAt(eliminar); //eliminamos lo que esté en esa posicion
                 Reproductor.Ctlcontrols.stop();
             }
         }
